@@ -99,14 +99,13 @@ int main(int argc, char** argv) {
     //continue until player runs out of cards or if one player wins
     //Game, when they run out of cards to play
     //             c1           cc1           c2            cc2
-    int j;
+    int j=0;
     do{
-        j=0;
         //TURN 1! FUNCKY THINGS FOR TURN 1
         do{
             cout<<player1<<"'s turn!"<<endl;
-            cnPlay=canPlay(c[j]->name(),c[j]->suit(),c[10]->name(),c[10]->suit());
-            if (cnPlay==1){
+            //cnPlay=canPlay(c[j]->name(),c[j]->suit(),c[10]->name(),c[10]->suit());
+            if (canPlay(c[j]->name(),c[j]->suit(),c[10]->name(),c[10]->suit())==1){
                 cout<<"Yes "<<player1<<endl;
                 //Swapping cards
                 Card* tempc;
@@ -116,15 +115,14 @@ int main(int argc, char** argv) {
                 cout<<"NEW TOP DECK: "<<c[10]->name()<<c[10]->suit()<<endl;
                 c[j]=NULL;
                 turn1=true;
-                hands1--;
+                hands1--;         
             }
             else{
-                cout<<"No "<<player1<<endl;
-                cout<<"NEW TOP DECK: "<<c[10]->name()<<c[10]->suit()<<endl;
-                j++;
+                cout<<j+1<<"'s card failed"<<endl;
+                j+=1;
             }
-            cnPlay=0;
             if(j=5){
+                cout<<"Skipped! "<<player1<<endl;
                 ply1f=true;
                 turn1=true;
             }
@@ -132,6 +130,7 @@ int main(int argc, char** argv) {
         //Player 2 goes if player one fails to play a card
         j=5;
         while(!ply1f){
+            cout<<"Hi "<<j<<endl;
             cout<<player2<<"'s turn!"<<endl;
             cnPlay=canPlay(c[j]->name(),c[j]->suit(),c[10]->name(),c[10]->suit());
             if (cnPlay==1){
@@ -186,7 +185,7 @@ int main(int argc, char** argv) {
                 cout<<"No "<<player2<<endl;
                 cout<<"NEW TOP DECK: "<<c[10]->name()<<c[10]->suit()<<endl; 
                 for(j;j<=10;j++);{
-                    if(j=9){
+                    if(j=10){
                         cout<<player2<<" has been skipped!"<<endl;
                         turn1=false;
                     }
@@ -214,6 +213,8 @@ int main(int argc, char** argv) {
                 else{
                     cout<<"No "<<player1<<endl;
                     cout<<"NEW TOP DECK: "<<c[10]->name()<<c[10]->suit()<<endl;
+                    cout<<"Game cannot be played, no player has correct cards!"<<endl;
+                    return 1;
                     for(j,j<=5;j++;){
                         if(j=5){
                             cout<<player1<<" has been skipped!"<<endl;
@@ -226,6 +227,8 @@ int main(int argc, char** argv) {
             }
             if(hands1==0){
                 cout<<player1<<": WINS!"<<endl;
+                p1score=exp(1);
+                cout<<"Points: "<<p1score<<endl;
                 gplay=true;
                 play=true;
             }
@@ -260,6 +263,8 @@ int main(int argc, char** argv) {
             }
             if(hands2==0){
                 cout<<player2<<": WINS!"<<endl;
+                p2score=exp(1);
+                cout<<"Points: "<<p2score<<endl;
                 gplay=true;
                 play=true;
             }
