@@ -1,0 +1,23 @@
+**********************************************************************
+
+Welcome 		to 			UNO!!!!!!!
+
+**********************************************************************
+
+Setup: The game version is for X players, ages doesn't matter. Every 
+player starts with seven cards. The rest of the cards are set aside.
+(This version is unable to draw new cards.) Next to the pile a space 
+should be designated for a Discard Pile. The top card should be placed 
+in the Discard Pile, and the game begins! Also know as the starting 
+card.
+
+Game Play: Every player views his/her cards and tries to match the 
+card in the Discard Pile.
+
+You have to match either by the number or color. For instance, if 
+the Discard Pile has a red card that is an 8 you have to place either 
+a red card or a card with an 8 on it. 
+
+If the player has no matches the game moves on to the next person. 
+
+The winner is awarded e^(1) points.
